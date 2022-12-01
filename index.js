@@ -6,6 +6,7 @@ const fileOps = async () => {
       path.join(__dirname, "files", "starter.txt"),
       "utf8"
     );
+    await fsPromises.unlink(path.join(__dirname, "files", "starter.txt"));
     await fsPromises.writeFile(
       path.join(__dirname, "files", "promiseWrite.txt"),
       data
