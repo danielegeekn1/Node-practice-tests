@@ -21,8 +21,13 @@ const logEvents = async (message, logName) => {
     console.log(error);
   }
 };
+const logger = (req, res, next) => {
+  logEvents(`${req.method}\t${req.header.origin}\t${req.url}`, "reqLog.txt");
+  console.log(`${req.method} ${req.path}`);
+  next();
+};
 console.log(format(new Date(), "yyyyMMdd\tHH:mm:ss"));
 console.log("one piece is the top");
 console.log(uuid());
 
-module.exports = logEvents;
+module.exports = { logger, logEvents };
