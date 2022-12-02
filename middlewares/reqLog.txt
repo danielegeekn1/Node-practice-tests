@@ -4,3 +4,7 @@
 20221202	18:15:11	9918b734-f95a-457e-9c7b-03255cbd09a7	GET	undefined	/css/style.css
 20221202	18:18:57	e0e31520-887e-4136-94b8-420fc817fa80	OPTIONS	undefined	/
 20221202	18:18:57	688ccc2f-ebfe-4b18-8e19-1a6f3024a22a	GET	undefined	/
+20221202	21:05:23	71094ce5-8b7e-46d1-8c64-d41de2285864	GET	undefined	/
+20221202	21:05:23	e0960682-1304-4677-b0c6-8dffc1738e34	GET	undefined	/css/style.css
+20221202	21:05:24	9e175bb0-04e4-4665-a221-5fea436a6c9b	GET	undefined	/
+20221202	21:05:24	d946bf1a-f2be-42ca-87af-c4531d6c1bfe	GET	undefined	/css/style.css

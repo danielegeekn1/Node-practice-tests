@@ -9,13 +9,13 @@ const PORT = process.env.PORT || 3500;
 app.use(logger);
 //using cors - Cross Origin Resource Sharing
 const whitelist = [
-  "https://www.yoursite.com",
+  "https://www.google.com",
   "http://127.0.0.1:5500",
   "http://localhost:3500",
 ];
 const corsOptions = {
   origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -69,6 +69,10 @@ const three = (req, res) => {
 app.get("/chain(.html)?", [one, two, three]);
 app.get("/*", (req, res) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
+app.use(function (err, req, res, next) {
+  console.log(err.stack);
+  res.status(500).send(err.message);
 });
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
