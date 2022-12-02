@@ -1,0 +1,2 @@
+20221202	18:01:42	4f11278b-75a5-42c5-bb74-35bd4daa4a94	GET	undefined	/
+20221202	18:01:42	e4d422b5-002b-40d0-bbf0-6900d69b7947	GET	undefined	/css/style.css
