@@ -16,6 +16,21 @@ const myEmitter = new Emitter();
 
 //defining the PORT of our server
 const PORT = process.env.PORT || 3500;
+const serveFile = async (filePath, contentType, response) => {
+  try {
+    const rawData = await fsPromises.readFile(filePath, "utf8");
+    const data =
+      contentType === "application/json" ? JSON.parse(rawData) : rawData;
+    response.writeHead(200, { "Content-Type": contentType });
+    response.end(
+      contentType === "application/json" ? JSON.stringify(data) : data
+    );
+  } catch (error) {
+    console.error(error);
+    response.statusCode = 500;
+    response.end();
+  }
+};
 //defining server
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
@@ -83,10 +98,22 @@ const server = http.createServer((req, res) => {
   const fileExist = fs.existsSync(filePath); //expects a boolean true or false value
   if (fileExist) {
     //serve the file
+    serveFile(filePath, contentType, res);
   } else {
-    //404
-    //301 redirect
-    console.log(path.parse(filePath));
+    //serve 301 redirect response
+    switch (path.parse(filePath).base) {
+      case "old-page.html":
+        res.writeHead(301, { Location: "/new-page.html" });
+        res.end();
+        break;
+      case "www-page.html":
+        res.writeHead(301, { Location: "/" });
+        res.end();
+        break;
+      //serve a 404 response
+      default:
+        serveFile(path.join(__dirname, "views", "404.html"), "text/html", res);
+    }
   }
 });
 server.listen(PORT, () => {
