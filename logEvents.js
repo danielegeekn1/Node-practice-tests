@@ -7,7 +7,7 @@ const path = require("path");
 
 const logEvents = async (message) => {
   const dateTime = `${format(new Date(), "yyyyMMdd\tHH:mm:ss")}`;
-  const logItems = `${dateTime}\t${uuid()}\t${message}`;
+  const logItems = `${dateTime}\t${uuid()}\t${message}\n`;
   console.log(logItems);
   try {
     if (!fs.existsSync(path.join(__dirname, "Logs"))) {
