@@ -8,11 +8,8 @@ const EventEmitter = require("events");
 class Emitter extends EventEmitter {}
 //initialize the obj we're going to create
 const myEmitter = new Emitter();
-
 //add listener for the log event
-// myEmitter.on("log", (msg) => logEvents(msg));
-
-// myEmitter.emit("log", "log event emitted");
+myEmitter.on("log", (msg, fileName) => logEvents(msg, fileName));
 
 //defining the PORT of our server
 const PORT = process.env.PORT || 3500;
@@ -24,12 +21,15 @@ const serveFile = async (filePath, contentType, response) => {
     );
     const data =
       contentType === "application/json" ? JSON.parse(rawData) : rawData;
-    response.writeHead(200, { "Content-Type": contentType });
+    response.writeHead(filePath.includes("404.html") ? 404 : 200, {
+      "Content-Type": contentType,
+    });
     response.end(
       contentType === "application/json" ? JSON.stringify(data) : data
     );
   } catch (error) {
     console.error(error);
+    myEmitter.emit("log", `${err.name}: ${err.message}`, "errLog.txt");
     response.statusCode = 500;
     response.end();
   }
@@ -37,6 +37,7 @@ const serveFile = async (filePath, contentType, response) => {
 //defining server
 const server = http.createServer((req, res) => {
   console.log(req.url, req.method);
+  myEmitter.emit("log", `${req.url}\t${req.method}`, "reqLog.txt");
   /* possibile way to manage server 
   let path;
   if (req.url === "/" || req.url === "index.html") {
