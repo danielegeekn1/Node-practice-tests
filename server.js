@@ -4,6 +4,8 @@ const path = require("path");
 
 //defining the PORT of our server
 const PORT = process.env.PORT || 3500;
+//built in middleware
+
 app.get("^/$|/index(.html)?", (req, res) => {
   //we could send file in this way, used a lot while working in EXPRESS
   res.sendFile("./views/index.html", { root: __dirname });
