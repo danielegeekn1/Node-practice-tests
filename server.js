@@ -13,6 +13,12 @@ app.get("^/$|/index(.html)?", (req, res) => {
 app.get("/new-page(.html)?", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "new-page.html"));
 });
+app.get("/old-page(.html)?", (req, res) => {
+  res.redirect(301, "/new-page.html"); //302 by default( that will not redirect )
+});
+app.get("/*", (req, res) => {
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+});
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
