@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const { cors } = require("cors");
 const { logger } = require("./middlewares/logEvents");
+const { errorHandler } = require("./middlewares/errorHandler");
 //defining the PORT of our server
 const PORT = process.env.PORT || 3500;
 //custom middleware logger
@@ -70,10 +71,7 @@ app.get("/chain(.html)?", [one, two, three]);
 app.get("/*", (req, res) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
-app.use(function (err, req, res, next) {
-  console.log(err.stack);
-  res.status(500).send(err.message);
-});
+app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
