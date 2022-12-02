@@ -1,2 +1,6 @@
 20221202	18:01:42	4f11278b-75a5-42c5-bb74-35bd4daa4a94	GET	undefined	/
 20221202	18:01:42	e4d422b5-002b-40d0-bbf0-6900d69b7947	GET	undefined	/css/style.css
+20221202	18:15:11	9ccc6589-89c6-4de6-a5c0-cc51245f0d62	GET	undefined	/
+20221202	18:15:11	9918b734-f95a-457e-9c7b-03255cbd09a7	GET	undefined	/css/style.css
+20221202	18:18:57	e0e31520-887e-4136-94b8-420fc817fa80	OPTIONS	undefined	/
+20221202	18:18:57	688ccc2f-ebfe-4b18-8e19-1a6f3024a22a	GET	undefined	/

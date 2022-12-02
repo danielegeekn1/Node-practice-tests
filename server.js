@@ -1,11 +1,29 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const { cors } = require("cors");
 const { logger } = require("./middlewares/logEvents");
 //defining the PORT of our server
 const PORT = process.env.PORT || 3500;
 //custom middleware logger
 app.use(logger);
+//using cors - Cross Origin Resource Sharing
+const whitelist = [
+  "https://www.yoursite.com",
+  "http://127.0.0.1:5500",
+  "http://localhost:3500",
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 //built in middleware for url encoded data - form data
 app.use(express.urlencoded({ extended: false }));
 //built in middleware for json data
