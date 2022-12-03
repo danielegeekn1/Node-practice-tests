@@ -20,3 +20,12 @@
 20221203	09:55:11	df6e965e-c581-4ddf-ab46-f4e6180fa152	GET	undefined	/css/style.css
 20221203	09:55:14	6d56feff-534d-428a-81ad-30847303d1db	GET	undefined	/daniele
 20221203	09:55:14	fbeceec9-1a22-4f72-94ea-aab0ae5009c3	GET	undefined	/css/style.css
+20221203	13:37:33	24f47b52-cf4b-48ca-a693-4f6eaa76956f	GET	undefined	/
+20221203	13:37:33	ca2bd2ef-6a6a-4fe7-b472-293f395969b2	GET	undefined	/css/style.css
+20221203	13:37:41	9de15d0d-015c-4a0c-a901-3ef94cf043e9	GET	undefined	/subdir
+20221203	13:37:58	9c7cc1c2-a1a0-4aa7-a410-431aa0301cfc	GET	undefined	/subdir/test
+20221203	13:37:58	e8ea76eb-e965-4080-b588-7a316b8dd1a2	GET	undefined	/subdir/css/style.css
+20221203	13:39:13	2c67d46c-483c-42e3-b282-c22b3ed2feec	GET	undefined	/subdir/test
+20221203	13:39:13	c8398ab0-0ed3-4cd7-a0cb-d6591ecffdf7	GET	undefined	/subdir/css/style.css
+20221203	13:39:19	bf4ed95e-9937-4fcf-ad62-e59ec60e21f4	GET	undefined	/subdir/test.html
+20221203	13:39:19	75a87b0f-30a9-429b-ae49-156ffa50783d	GET	undefined	/subdir/css/style.css

@@ -24,13 +24,15 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200,
 };
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 //built in middleware for url encoded data - form data
 app.use(express.urlencoded({ extended: false }));
 //built in middleware for json data
 app.use(express.json());
 //built in middleware to serve static file
 app.use(express.static(path.join(__dirname, "/public")));
+
+app.use("/subdir", require("./routes/subdir"));
 app.get("^/$|/index(.html)?", (req, res) => {
   //we could send file in this way, used a lot while working in EXPRESS
   res.sendFile("./views/index.html", { root: __dirname });
