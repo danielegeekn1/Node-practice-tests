@@ -30,21 +30,13 @@ app.use(express.urlencoded({ extended: false }));
 //built in middleware for json data
 app.use(express.json());
 //built in middleware to serve static file
-app.use(express.static(path.join(__dirname, "/public")));
+app.use("/", express.static(path.join(__dirname, "/public")));
 
+app.use("/subdir", express.static(path.join(__dirname, "/public")));
+
+app.use("/", require("./routes/root"));
 app.use("/subdir", require("./routes/subdir"));
-app.get("^/$|/index(.html)?", (req, res) => {
-  //we could send file in this way, used a lot while working in EXPRESS
-  res.sendFile("./views/index.html", { root: __dirname });
-  //we could also send file in this way that's how we usually would do in NODE.JS
-  //res.sendFile(path.join(__dirname, "views", "index.html"));
-});
-app.get("/new-page(.html)?", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "new-page.html"));
-});
-app.get("/old-page(.html)?", (req, res) => {
-  res.redirect(301, "/new-page.html"); //302 by default( that will not redirect )
-});
+
 //Route handlers with next()
 app.get(
   "/hello(.html)?",
