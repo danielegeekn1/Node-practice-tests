@@ -64,8 +64,18 @@ let fs = require("fs");
 // let readMe = fs.readFileSync("readMe.txt", "utf8");
 // console.log(readMe);
 // fs.writeFileSync("writeMe.txt", readMe);
-fs.readFile("readMe.txt", "utf8", (err, data) => {
+fs.readFile("readMe.txt", "utf8", (data, err) => {
   console.log(data);
   fs.writeFileSync("writeMe.txt", data);
 });
 console.log("test");
+
+//creating a directiory and adding some read file into another asynchronously
+fs.mkdir("stuff", () => {
+  fs.readFile("readMe.txt", "utf8", (data, err) => {
+    fs.writeFile("./stuff", writeMe.txt, data);
+  });
+});
+fs.unlink("./stuff/writeMe.txt", function () {
+  fs.rmdir("stuff");
+});
