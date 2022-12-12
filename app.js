@@ -27,3 +27,7 @@ let sayBye = function () {
   console.log("Bye");
 };
 callFunction(sayBye);
+let stuff = require("./stuff");
+console.log(stuff.counter(["Shaun", "Crystal", "Mya"]));
+console.log(stuff.adder(5, 6));
+console.log(stuff.adder(stuff.pi, 5));
