@@ -61,6 +61,11 @@ peopleArray.forEach((person) => {
 James.emit("speak", "hey dudes");
 */
 let fs = require("fs");
-let readMe = fs.readFileSync("readMe.txt", "utf8");
-console.log(readMe);
-fs.writeFileSync("writeMe.txt", readMe);
+// let readMe = fs.readFileSync("readMe.txt", "utf8");
+// console.log(readMe);
+// fs.writeFileSync("writeMe.txt", readMe);
+fs.readFile("readMe.txt", "utf8", (err, data) => {
+  console.log(data);
+  fs.writeFileSync("writeMe.txt", data);
+});
+console.log("test");
