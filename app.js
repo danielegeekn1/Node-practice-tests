@@ -1,4 +1,6 @@
 //methods allowed by Node js global object
+
+/*
 console.log("Hey Ninjas");
 console.log("Hi I am Batman");
 
@@ -57,3 +59,8 @@ peopleArray.forEach((person) => {
   });
 });
 James.emit("speak", "hey dudes");
+*/
+let fs = require("fs");
+let readMe = fs.readFileSync("readMe.txt", "utf8");
+console.log(readMe);
+fs.writeFileSync("writeMe.txt", readMe);
