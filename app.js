@@ -19,3 +19,11 @@ const timer = setInterval(() => {
 console.log(__dirname);
 //file name
 console.log(__filename);
+
+function callFunction(fun) {
+  fun();
+}
+let sayBye = function () {
+  console.log("Bye");
+};
+callFunction(sayBye);
