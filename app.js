@@ -91,9 +91,9 @@ let fs = require("fs");
 let http = require("http");
 let server = http.createServer((req, res) => {
   console.log("request was made" + req.url);
-  res.writeHead(200, { "Content-Type": "text/html" });
-  let myReadStream = fs.createReadStream(__dirname + "/index.html", "utf8");
-  myReadStream.pipe(res);
+  res.writeHead(200, { "Content-Type": "application/json" });
+  let myObj = { name: "Ryu", job: "Ninja", age: 29 };
+  res.end(JSON.stringify(myObj));
 });
 server.listen(3000, "127.0.0.1"); //first our server port number, then our server ip
 console.log("yo men, now listening to port 3000");
