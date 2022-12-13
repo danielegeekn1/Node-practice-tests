@@ -79,6 +79,7 @@
 // fs.unlink("./stuff/writeMe.txt", function () {
 //   fs.rmdir("stuff");
 // });
+/*
 let http = require("http");
 let server = http.createServer((req, res) => {
   console.log("request was made" + req.url);
@@ -87,3 +88,13 @@ let server = http.createServer((req, res) => {
 });
 server.listen(3000, "127.0.0.1"); //first our server port number, then our server ip
 console.log("yo men, now listening to port 3000");
+*/
+let http = require("http");
+let fs = require("fs");
+let myWriteStream = fs.createWriteStream(__dirname + "/readMe.txt", "utf8");
+let myReadStream = fs.createReadStream(__dirname + "/writeMe.txt", "utf8");
+myReadStream.on("data", (chunk) => {
+  console.log("new chunk received");
+  console.log(chunk);
+  myWriteStream.write(chunk);
+});
