@@ -80,14 +80,14 @@
 //   fs.rmdir("stuff");
 // });
 
-let fs = require("fs");
+//let fs = require("fs");
 
 // myReadStream.on("data", (chunk) => {
 //   console.log("new chunk received");
 //   console.log(chunk);
 //   myWriteStream.write(chunk);
 // });
-
+/*
 let http = require("http");
 let server = http.createServer((req, res) => {
   console.log("request was made" + req.url);
@@ -119,3 +119,13 @@ let server = http.createServer((req, res) => {
 });
 server.listen(3000, "127.0.0.1"); //first our server port number, then our server ip
 console.log("yo men, now listening to port 3000");
+*/
+let express = require("express");
+let app = express();
+app.get("/", (req, res) => {
+  res.send("This is the homepage");
+});
+app.get("/contact", (req, res) => {
+  res.send("This is the contact page");
+});
+app.listen(3000);

@@ -1,0 +1,22 @@
+{
+  "name": "tutorial-net-ninja",
+  "description": "Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda.Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda. Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda. Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda. Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda. Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda. Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda. Quando sono cotte trasferite il tutto nella zuppiera, condite con un cucchiaio di olio a crudo, il formaggio grattugiato, una macinata di pepe e servite la pasta e ceci alla toscana ben calda.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielegeekn1/Node-practice-tests.git"
+  },
+  "author": "Daniele Basile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielegeekn1/Node-practice-tests/issues"
+  },
+  "homepage": "https://github.com/danielegeekn1/Node-practice-tests#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
