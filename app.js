@@ -122,13 +122,15 @@ console.log("yo men, now listening to port 3000");
 */
 let express = require("express");
 let app = express();
+app.set("view engine", "ejs");
 app.get("/", (req, res) => {
-  res.send("This is the homepage");
+  res.sendFile(__dirname + "/index.html");
 });
 app.get("/contact", (req, res) => {
-  res.send("This is the contact page");
+  res.sendFile(__dirname + "/contact.html");
 });
 app.get("/profile/:name", (req, res) => {
-  res.send("You requested to see a profile with the id of " + req.params.name);
+  let data = { age: 29, job: "Ninja" };
+  res.render("profile", { person: req.params.name, data: data });
 });
 app.listen(3000);
