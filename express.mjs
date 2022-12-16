@@ -14,11 +14,7 @@ app.use(function seMiddlewareWithError(request, response, next) {
   console.log("called:setHeaderMiddlewareWithError");
   next(new Error("There has been an error"));
 });
-app.use(function seMiddlewareWithError(error, request, response, next) {
-  console.log("called:setHeaderMiddlewareWithError");
-  next(new Error("There has been an error"));
-});
-app.use(function handlingMiddlewareErrors(error, request, response, request) {
+app.use(function handlingMiddlewareErrors(error, response, request) {
   console.log("error:handlingMiddlewareErrors");
   response.status(500);
   response.json({ message: error.message });
