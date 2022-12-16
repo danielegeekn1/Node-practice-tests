@@ -53,9 +53,16 @@ someTask.then(
 );
 */
 import * as fs from "node:fs/promises";
-fs.readFile("file-0.txt", { encoding: "utf8" }).then((data) => {
-  console.log("data", data);
-  (error) => {
+fs.readFile("file-0.txt", { encoding: "utf8" })
+  .then((file1data) => {
+    console.log("data", file1data);
+  })
+  .then(() => {
+    return fs.readFile("file-2.txt", { encoding: "utf8" });
+  })
+  .then((file2data) => {
+    console.log("data", file2data);
+  })
+  .catch((error) => {
     console.error(error);
-  };
-});
+  });
