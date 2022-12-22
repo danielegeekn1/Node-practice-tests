@@ -4,8 +4,9 @@ const path = require("path");
 app.use(express.urlencoded({ extended: false })); //it'll look at the body of our POST request
 //add superconvient named property to it
 app.use(getWeather);
+app.use(express.static(path.join(__dirname, "public")));
+// express static is a built-in method used to use static files such as css, images...
 
-//
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views")); //set it to read from our views folder
 
@@ -39,5 +40,12 @@ app.post("/result", (req, res) => {
 });
 app.get("/result", (req, res) => {
   res.send("Why are you visiting this URL??");
+});
+app.get("/api/pets", (req, res) => {
+  res.json([
+    { name: "meow meow", species: "cat" },
+    { name: "barks a lot", species: "dog" },
+  ]);
+  //that's how we could render some json format code
 });
 app.listen(3000);
