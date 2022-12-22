@@ -1,8 +1,14 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 app.use(express.urlencoded({ extended: false })); //it'll look at the body of our POST request
 //add superconvient named property to it
 app.use(getWeather);
+
+//
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); //set it to read from our views folder
+
 function getWeather(req, res, next) {
   req.visitorWeather = false;
   if (req.visitorWeather) {
@@ -12,13 +18,14 @@ function getWeather(req, res, next) {
   }
 }
 app.get("/", (req, res) => {
-  res.send(`<h1>What color is the sky on a clear day?</h1>
-  <form action="/result" method="POST">
-  <input type="text" name="color">
-  <button>Submit answer</button>
-  </form>
-  <p>${req.visitorWeather === true ? "It is raining" : "It is not raining"}</p>
-  `);
+  res.render("home", {
+    isRaining: req.visitorWeather,
+    pets: [
+      { name: "meow meow", species: "cat" },
+      { name: "barks a lot", species: "dog" },
+    ],
+    //in the second parameter as object we set the data we want to be able to render in our template engine
+  }); //rendering home.ejs template engine file we created
 });
 app.get("/about", (req, res) => {
   res.send("Thanks for learning more about us");
