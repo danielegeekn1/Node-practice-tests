@@ -5,8 +5,11 @@ async function main() {
   //const user = await prisma.user.create({ data: { name: "Sally" } });
   //const user = await prisma.user.findMany(); //this'll find all model properti
   //console.log(user);
-  await prisma.user.deleteMany();
+  //await prisma.user.deleteMany();
+  const users = await prisma.user.findFirst({ where: { name: "Sally" } });
+  console.log(users);
 }
+
 main()
   .catch((e) => console.log(e.message))
   .finally(async () => {
