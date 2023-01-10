@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+//generator is what your code is generated into
+//is a unique prisma code, diffrent from sql, nosql
+//you generate it with the provider
+datasource db {
+  provider = "postgresql" 
+  url      = env("DATABASE_URL") 
+}
+////provider - where our data is coming from
+// url - environment variable it's set by defaul in .env file
+model User {
+  id   Int    @id @default(autoincrement())
+  name String
+}
