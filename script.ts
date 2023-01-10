@@ -3,8 +3,9 @@ const prisma = new PrismaClient();
 async function main() {
   //prisma client queries in here
   //const user = await prisma.user.create({ data: { name: "Sally" } });
-  const user = await prisma.user.findMany(); //this'll find all model properties which has been added until now
-  console.log(user);
+  //const user = await prisma.user.findMany(); //this'll find all model properti
+  //console.log(user);
+  await prisma.user.deleteMany();
 }
 main()
   .catch((e) => console.log(e.message))
