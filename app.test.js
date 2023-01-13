@@ -13,6 +13,15 @@ describe("POST /users", () => {
       expect(res.statusCode).toBe(200);
     });
     //should specify json in the content-type header
+    test("should specify json in content type header", async () => {
+      const res = request(app).post("/users").send({
+        username: "username",
+        password: "password",
+      });
+      expect(res.headers["content-type"]).toEqual(
+        expect.stringContaining("json")
+      );
+    });
   });
   describe("username and password are missing", () => {
     //should respond with a status code of 400, to represent user error
