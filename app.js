@@ -1,6 +1,12 @@
 import express from "express";
 const app = express();
+app.use(express.json());
 app.post("/users", (req, res) => {
-  res.send({});
+  const { password } = req.body;
+  if (!password) {
+    res.sendStatus(400);
+    return;
+  }
+  res.send({ userId: 0 });
 });
 export default app;

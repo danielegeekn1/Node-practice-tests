@@ -1,3 +1,4 @@
+import { request } from "express";
 import supertest from "supertest";
 import app from "./app.js";
 describe("POST /users", () => {
@@ -22,8 +23,27 @@ describe("POST /users", () => {
         expect.stringContaining("json")
       );
     });
+    test("response has userId", async () => {
+      const res = await request(app).post("users/").send({
+        username: "username",
+        password: "password",
+      });
+      expect(res.body.userId).toBeDefined();
+    });
   });
   describe("username and password are missing", () => {
     //should respond with a status code of 400, to represent user error
+    test("should respond with a status code of 400", async () => {
+      const bodyData = [
+        {
+          username: "username",
+          password: "password",
+        },
+      ];
+      for (const body of bodyData) {
+        const res = await request.app().post("/users").send(body);
+        expect(res.statusCode).toBe(400);
+      }
+    });
   });
 });
