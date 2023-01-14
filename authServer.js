@@ -14,6 +14,10 @@ app.post("/token", (req, res) => {
     res.json({ accessToken: accessToken });
   });
 });
+app.delete("/logout", (req, res) => {
+  refreshToken = refreshToken.filter((token) => token !== req.body.token);
+  res.sendStatus(204);
+});
 //login
 app.post("/login", (req, res) => {
   //authenticate user
