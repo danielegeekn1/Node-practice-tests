@@ -1,0 +1,19 @@
+{
+  "name": "node-jwt-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielegeekn1/Node-practice-tests.git"
+  },
+  "author": "daniele basile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielegeekn1/Node-practice-tests/issues"
+  },
+  "homepage": "https://github.com/danielegeekn1/Node-practice-tests#readme"
+}
