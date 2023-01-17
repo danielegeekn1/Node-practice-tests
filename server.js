@@ -1,19 +1,44 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
-const passport = require("password");
-const initializePsw = require("./passport.config");
-initializePsw(passport);
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
+const initializePassport = require("./passport-config");
+initializePassport(passport, (email) => {
+  return users.find((users) => users.email === email);
+});
 const users = [];
 app.set("view engine", "ejs"); //to allow our browser to read ejs files
 app.use(express.urlencoded({ extendend: false }));
+app.use(flash());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false, //no resave wether there are no changes
+    saveUninitialized: false, //no saving empty values if there's no value
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.get("/", (req, res) => {
   res.render("index.ejs", { name: "Kyle" });
 });
 app.get("/login", (req, res) => {
   res.render("login.ejs");
 });
-app.post("/login", (req, res) => {});
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
 app.get("/register", (req, res) => {
   res.render("register.ejs");
 });
