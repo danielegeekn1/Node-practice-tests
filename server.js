@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
-const initializePassport = require("./passport-config");
+const initializePassport = require("./passport.config");
 initializePassport(passport, (email) => {
   return users.find((users) => users.email === email);
 });
@@ -36,7 +36,7 @@ app.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
-    failureFlash: true,
+    failureFlash: true, //to display error message accordingly to what we set in passport.config function
   })
 );
 app.get("/register", (req, res) => {

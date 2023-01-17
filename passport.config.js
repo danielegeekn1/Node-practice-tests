@@ -18,10 +18,13 @@ const initialize = (passport) => {
     }
   };
   passport.use(
-    new localStrategy({
-      usernameField: "email",
-    }),
-    authenticateUsers,
+    new localStrategy(
+      {
+        usernameField: "email",
+      },
+      authenticateUsers
+    ),
+
     passport.serializeUser((user, done) => {}),
     passport.deserializeUser((id, done) => {})
   );
