@@ -1,4 +1,4 @@
-const localStrategy = require("passport-local").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 //in order to use local version of passport
 const bcrypt = require("bcrypt");
 const initialize = (passport) => {
@@ -18,7 +18,7 @@ const initialize = (passport) => {
     }
   };
   passport.use(
-    new localStrategy(
+    new LocalStrategy(
       {
         usernameField: "email",
       },
