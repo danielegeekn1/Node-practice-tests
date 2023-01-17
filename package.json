@@ -1,0 +1,27 @@
+{
+  "name": "passport-auth-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielegeekn1/Node-practice-tests.git"
+  },
+  "author": "daniele basile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielegeekn1/Node-practice-tests/issues"
+  },
+  "homepage": "https://github.com/danielegeekn1/Node-practice-tests#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  }
+}
