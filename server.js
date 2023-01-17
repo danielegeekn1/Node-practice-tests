@@ -38,7 +38,7 @@ const checkAuthenticated = (req, res, next) => {
 };
 const checkNotAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.redirect("/");
+    return res.redirect("/");
   }
   next();
 };
