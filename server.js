@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const bcrypt = require("bcrypt");
+const passport = require("password");
+const initializePsw = require("./passport.config");
+initializePsw(passport);
 const users = [];
 app.set("view engine", "ejs"); //to allow our browser to read ejs files
 app.use(express.urlencoded({ extendend: false }));
