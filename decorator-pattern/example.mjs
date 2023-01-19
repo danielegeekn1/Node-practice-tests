@@ -17,6 +17,7 @@ class BlueText {
   }
 }
 */
+//method called monkey patching
 function BlueText(text) {
   let originalString = text.toString;
   text.toString = function () {
