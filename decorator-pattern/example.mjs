@@ -7,6 +7,7 @@ class Text {
   }
 }
 import clc from "cli-color";
+/*
 class BlueText {
   constructor(text) {
     this.text = text;
@@ -15,5 +16,15 @@ class BlueText {
     return clc.blue(this.text.toString());
   }
 }
+*/
+function BlueText(text) {
+  let originalString = text.toString;
+  text.toString = function () {
+    return clc.blue(originalString.apply(text));
+  };
+  return text;
+}
 console.log(new Text("this is some text").toString());
-console.log(new BlueText(new Text("this text is blue")).toString());
+/*console.log(new BlueText(new Text("this text is blue")).toString());
+console.log(new Text("this is some text").toString());*/
+console.log(BlueText(new Text("this text is bluee")).toString());
