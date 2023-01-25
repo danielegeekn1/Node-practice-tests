@@ -5,7 +5,7 @@ const app = express();
 //modify the process functions that's been set once we save our file(photo in our case)
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    cb(null, "uploads");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname); //property to name, to which our img will be associated as value
