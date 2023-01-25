@@ -4,22 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login File</title>
+    <title>Home page</title>
   </head>
   <body>
-    <!--form to pass user's data to our postgresql database-->
-
-    <!--form to upload image-->
+    <h3><%= if typeof msg !== 'undefined' ? msg : '' %></h3>
     <form
       action="http://localhost:3030/1/image"
-      enctype="multipart/form-data"
       method="POST"
+      ,
+      enctype="multipart/form-data"
     >
-      <div>
-        <label for="image">image</label>
-        <input type="file" name="filename" />
+      <div class="btn-grey">
+        <span>File</span>
+        <input name="filename" type="file" />
       </div>
-      <button type="submit">Upload your photo</button>
+      <img
+        src="<%= if typeof file !== 'undefined' ? file : '' %>"
+        alt="uploaded image"
+      />
     </form>
   </body>
 </html>

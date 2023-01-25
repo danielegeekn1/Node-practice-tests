@@ -1,9 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import express, { Request } from "express";
-import multer, { FileFilterCallback } from "multer";
+import express from "express";
+import multer from "multer";
 import { randomUUID } from "crypto";
 import path from "path";
+import ejs from "ejs";
 const app = express();
 const port = process.env.PORT;
 //setting multer options for destination and file name
@@ -36,18 +37,25 @@ const checkFileExt = (file: any, cb: any) => {
 //global middlewares
 app.use(express.json());
 app.use(express.static("./public"));
-app.get("/", async (req, res) => {
-  const data = await prisma.photos.findMany();
-  res.json(data);
-});
-app.post("/:id/image", async (req, res) => {
-  const id = req.params.id;
-  const filename = req.file?.filename;
-  const uploadImg = await prisma.photos.update({
-    where: { id: +id },
-    data: { filename: filename },
+//allowing express to use ejs files
+app.set("view engine", "ejs");
+//routes
+app.post("/:id/upload", (req, res) => {
+  upload(req, res, async (err) => {
+    if (err) {
+      res.render("home", { msg: err });
+    } else {
+      console.log(req.file);
+      if (req.file?.filename === "undefined") {
+        res.render("home", { msg: "no file uploaded" });
+      } else {
+        res.render("home", {
+          msg: "image successfully uploaded",
+          file: `uploads/${req.file?.filename}`,
+        });
+      }
+    }
   });
-  res.status(201).json(uploadImg);
 });
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
