@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login File</title>
+  </head>
+  <body>
+    <!--form to pass user's data to our postgresql database-->
+
+    <!--form to upload image-->
+    <form
+      action="http://localhost:3030/1/image"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      <div>
+        <label for="image">image</label>
+        <input type="file" name="filename" />
+      </div>
+      <button type="submit">Upload your photo</button>
+    </form>
+  </body>
+</html>
