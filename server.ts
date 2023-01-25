@@ -40,6 +40,9 @@ app.use(express.static("./public"));
 //allowing express to use ejs files
 app.set("view engine", "ejs");
 //routes
+app.get("/", (req, res) => {
+  res.render("home");
+});
 app.post("/:id/upload", (req, res) => {
   upload(req, res, async (err) => {
     if (err) {

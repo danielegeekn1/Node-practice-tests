@@ -7,21 +7,24 @@
     <title>Home page</title>
   </head>
   <body>
-    <h3><%= if typeof msg !== 'undefined' ? msg : '' %></h3>
+    <h3><%= typeof msg !== 'undefined' ? msg : '' %></h3>
     <form
-      action="http://localhost:3030/1/image"
+      action="http://localhost:3030/1/upload"
       method="POST"
-      ,
       enctype="multipart/form-data"
     >
       <div class="btn-grey">
         <span>File</span>
         <input name="filename" type="file" />
       </div>
-      <img
-        src="<%= if typeof file !== 'undefined' ? file : '' %>"
-        alt="uploaded image"
-      />
+
+      <button type="submit">upload photo</button>
+      <div>
+        <img
+          src="<%= typeof msg !== 'undefined' ? file :'' %>"
+          alt="uploaded image"
+        />
+      </div>
     </form>
   </body>
 </html>
